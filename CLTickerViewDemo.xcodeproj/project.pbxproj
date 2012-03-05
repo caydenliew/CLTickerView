@@ -1,0 +1,300 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FD98B45C1504C2420098FE39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD98B45B1504C2420098FE39 /* UIKit.framework */; };
+		FD98B45E1504C2420098FE39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD98B45D1504C2420098FE39 /* Foundation.framework */; };
+		FD98B4601504C2420098FE39 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD98B45F1504C2420098FE39 /* CoreGraphics.framework */; };
+		FD98B4661504C2420098FE39 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD98B4641504C2420098FE39 /* InfoPlist.strings */; };
+		FD98B4681504C2420098FE39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD98B4671504C2420098FE39 /* main.m */; };
+		FD98B46C1504C2420098FE39 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD98B46B1504C2420098FE39 /* AppDelegate.m */; };
+		FD98B46F1504C2420098FE39 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD98B46E1504C2420098FE39 /* ViewController.m */; };
+		FD98B4721504C2420098FE39 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD98B4701504C2420098FE39 /* ViewController.xib */; };
+		FD98B4831504C2DE0098FE39 /* CLScrollview.m in Sources */ = {isa = PBXBuildFile; fileRef = FD98B4801504C2DE0098FE39 /* CLScrollview.m */; };
+		FD98B4841504C2DE0098FE39 /* CLTickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD98B4821504C2DE0098FE39 /* CLTickerView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FD98B4571504C2420098FE39 /* CLTickerViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLTickerViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD98B45B1504C2420098FE39 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FD98B45D1504C2420098FE39 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FD98B45F1504C2420098FE39 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FD98B4631504C2420098FE39 /* CLTickerViewDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CLTickerViewDemo-Info.plist"; sourceTree = "<group>"; };
+		FD98B4651504C2420098FE39 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FD98B4671504C2420098FE39 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FD98B4691504C2420098FE39 /* CLTickerViewDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLTickerViewDemo-Prefix.pch"; sourceTree = "<group>"; };
+		FD98B46A1504C2420098FE39 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FD98B46B1504C2420098FE39 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FD98B46D1504C2420098FE39 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FD98B46E1504C2420098FE39 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FD98B4711504C2420098FE39 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		FD98B47F1504C2DE0098FE39 /* CLScrollview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLScrollview.h; path = CLTickerView/CLScrollview.h; sourceTree = "<group>"; };
+		FD98B4801504C2DE0098FE39 /* CLScrollview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLScrollview.m; path = CLTickerView/CLScrollview.m; sourceTree = "<group>"; };
+		FD98B4811504C2DE0098FE39 /* CLTickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLTickerView.h; path = CLTickerView/CLTickerView.h; sourceTree = "<group>"; };
+		FD98B4821504C2DE0098FE39 /* CLTickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLTickerView.m; path = CLTickerView/CLTickerView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FD98B4541504C2420098FE39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD98B45C1504C2420098FE39 /* UIKit.framework in Frameworks */,
+				FD98B45E1504C2420098FE39 /* Foundation.framework in Frameworks */,
+				FD98B4601504C2420098FE39 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FD98B44C1504C2420098FE39 = {
+			isa = PBXGroup;
+			children = (
+				FD98B4611504C2420098FE39 /* CLTickerViewDemo */,
+				FD98B45A1504C2420098FE39 /* Frameworks */,
+				FD98B4581504C2420098FE39 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FD98B4581504C2420098FE39 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FD98B4571504C2420098FE39 /* CLTickerViewDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FD98B45A1504C2420098FE39 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FD98B45B1504C2420098FE39 /* UIKit.framework */,
+				FD98B45D1504C2420098FE39 /* Foundation.framework */,
+				FD98B45F1504C2420098FE39 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FD98B4611504C2420098FE39 /* CLTickerViewDemo */ = {
+			isa = PBXGroup;
+			children = (
+				FD98B4781504C26B0098FE39 /* CLTickerView */,
+				FD98B46A1504C2420098FE39 /* AppDelegate.h */,
+				FD98B46B1504C2420098FE39 /* AppDelegate.m */,
+				FD98B46D1504C2420098FE39 /* ViewController.h */,
+				FD98B46E1504C2420098FE39 /* ViewController.m */,
+				FD98B4701504C2420098FE39 /* ViewController.xib */,
+				FD98B4621504C2420098FE39 /* Supporting Files */,
+			);
+			path = CLTickerViewDemo;
+			sourceTree = "<group>";
+		};
+		FD98B4621504C2420098FE39 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FD98B4631504C2420098FE39 /* CLTickerViewDemo-Info.plist */,
+				FD98B4641504C2420098FE39 /* InfoPlist.strings */,
+				FD98B4671504C2420098FE39 /* main.m */,
+				FD98B4691504C2420098FE39 /* CLTickerViewDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FD98B4781504C26B0098FE39 /* CLTickerView */ = {
+			isa = PBXGroup;
+			children = (
+				FD98B47F1504C2DE0098FE39 /* CLScrollview.h */,
+				FD98B4801504C2DE0098FE39 /* CLScrollview.m */,
+				FD98B4811504C2DE0098FE39 /* CLTickerView.h */,
+				FD98B4821504C2DE0098FE39 /* CLTickerView.m */,
+			);
+			name = CLTickerView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FD98B4561504C2420098FE39 /* CLTickerViewDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FD98B4751504C2420098FE39 /* Build configuration list for PBXNativeTarget "CLTickerViewDemo" */;
+			buildPhases = (
+				FD98B4531504C2420098FE39 /* Sources */,
+				FD98B4541504C2420098FE39 /* Frameworks */,
+				FD98B4551504C2420098FE39 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CLTickerViewDemo;
+			productName = CLTickerViewDemo;
+			productReference = FD98B4571504C2420098FE39 /* CLTickerViewDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FD98B44E1504C2420098FE39 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Cayden Liew";
+			};
+			buildConfigurationList = FD98B4511504C2420098FE39 /* Build configuration list for PBXProject "CLTickerViewDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FD98B44C1504C2420098FE39;
+			productRefGroup = FD98B4581504C2420098FE39 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FD98B4561504C2420098FE39 /* CLTickerViewDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FD98B4551504C2420098FE39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD98B4661504C2420098FE39 /* InfoPlist.strings in Resources */,
+				FD98B4721504C2420098FE39 /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FD98B4531504C2420098FE39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD98B4681504C2420098FE39 /* main.m in Sources */,
+				FD98B46C1504C2420098FE39 /* AppDelegate.m in Sources */,
+				FD98B46F1504C2420098FE39 /* ViewController.m in Sources */,
+				FD98B4831504C2DE0098FE39 /* CLScrollview.m in Sources */,
+				FD98B4841504C2DE0098FE39 /* CLTickerView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FD98B4641504C2420098FE39 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD98B4651504C2420098FE39 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FD98B4701504C2420098FE39 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD98B4711504C2420098FE39 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FD98B4731504C2420098FE39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FD98B4741504C2420098FE39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FD98B4761504C2420098FE39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CLTickerViewDemo/CLTickerViewDemo-Prefix.pch";
+				INFOPLIST_FILE = "CLTickerViewDemo/CLTickerViewDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FD98B4771504C2420098FE39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CLTickerViewDemo/CLTickerViewDemo-Prefix.pch";
+				INFOPLIST_FILE = "CLTickerViewDemo/CLTickerViewDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FD98B4511504C2420098FE39 /* Build configuration list for PBXProject "CLTickerViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD98B4731504C2420098FE39 /* Debug */,
+				FD98B4741504C2420098FE39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FD98B4751504C2420098FE39 /* Build configuration list for PBXNativeTarget "CLTickerViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD98B4761504C2420098FE39 /* Debug */,
+				FD98B4771504C2420098FE39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FD98B44E1504C2420098FE39 /* Project object */;
+}
