@@ -42,32 +42,34 @@
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
-    CGSize labelSize = [self labelSizeForText:self.marqueeStr forFont:self.marqueeFont];
-    labelWidth = labelSize.width;
-    
-    self.scrollview = [[CLScrollview alloc] initWithFrame:CGRectMake(0, 0, 
+    if (self.scrollview == nil) {
+        CGSize labelSize = [self labelSizeForText:self.marqueeStr forFont:self.marqueeFont];
+        labelWidth = labelSize.width;
+        
+        self.scrollview = [[CLScrollview alloc] initWithFrame:CGRectMake(0, 0, 
                                                                          self.frame.size.width, 
                                                                          self.frame.size.height)];
-    self.scrollview.delegate = self;
-    self.scrollview.customDelegate = self;
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width,
-                                                               0,
-                                                               labelSize.width,
-                                                               self.frame.size.height)];
-    label.font = self.marqueeFont;
-    label.backgroundColor = [UIColor clearColor];
-    label.textColor = [UIColor whiteColor];
-    label.text = self.marqueeStr;
-
-    [self.scrollview addSubview:label];
-    [self addSubview:self.scrollview];
-    [label release];
-    
-    contentWidth = 2 * self.frame.size.width + labelSize.width;
-    [self.scrollview setContentSize:CGSizeMake(contentWidth, self.frame.size.height)];
-    startScrolling = NO;
-    [self startScrolling];
+        self.scrollview.delegate = self;
+        self.scrollview.customDelegate = self;
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width,
+                                                                   0,
+                                                                   labelSize.width,
+                                                                   self.frame.size.height)];
+        label.font = self.marqueeFont;
+        label.backgroundColor = [UIColor clearColor];
+        label.textColor = [UIColor whiteColor];
+        label.text = self.marqueeStr;
+        
+        [self.scrollview addSubview:label];
+        [self addSubview:self.scrollview];
+        [label release];
+        
+        contentWidth = 2 * self.frame.size.width + labelSize.width;
+        [self.scrollview setContentSize:CGSizeMake(contentWidth, self.frame.size.height)];
+        startScrolling = NO;
+        [self startScrolling];
+    }
 }
 
 - (void)dealloc {
