@@ -17,6 +17,6 @@
 
 @interface CLScrollview : UIScrollView
 
-@property (nonatomic, assign) id <CLScrollviewDelegate> customDelegate;
+@property (nonatomic, weak) id <CLScrollviewDelegate> customDelegate;
 
 @end

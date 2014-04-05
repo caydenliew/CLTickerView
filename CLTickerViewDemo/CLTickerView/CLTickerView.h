@@ -15,9 +15,9 @@
     BOOL startScrolling;
 }
 
-@property (nonatomic, retain) CLScrollview *scrollview;
-@property (nonatomic, retain) NSString *marqueeStr;
-@property (nonatomic, retain) UIFont *marqueeFont;
+@property (nonatomic, strong) CLScrollview *scrollview;
+@property (nonatomic, strong) NSString *marqueeStr;
+@property (nonatomic, strong) UIFont *marqueeFont;
 
 - (CGSize)labelSizeForText:(NSString *)text forFont:(UIFont *)font;
 

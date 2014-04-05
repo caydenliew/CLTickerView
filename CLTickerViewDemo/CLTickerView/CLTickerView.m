@@ -63,7 +63,6 @@
         
         [self.scrollview addSubview:label];
         [self addSubview:self.scrollview];
-        [label release];
         
         contentWidth = 2 * self.frame.size.width + labelSize.width;
         [self.scrollview setContentSize:CGSizeMake(contentWidth, self.frame.size.height)];
@@ -74,9 +73,7 @@
 
 - (void)dealloc {
     [self stopScrolling];
-    [self.marqueeFont release];
-    [self.marqueeStr release];
-    [super dealloc];
+
 }
 
 //start scroll animation

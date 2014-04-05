@@ -31,7 +31,6 @@
     ticker.marqueeFont = [UIFont boldSystemFontOfSize:16];
     
     [self.view addSubview:ticker];
-    [ticker release];
 }
 
 - (void)viewDidUnload
