@@ -6,108 +6,183 @@
 //
 
 #import "CLTickerView.h"
+#import "CLScrollview.h"
 
-@interface CLTickerView() 
-- (void)startScrolling;
-- (void)stopScrolling;
+@interface CLTickerView() <UIScrollViewDelegate, CLScrollviewDelegate> {
+    
+    CLScrollview *_scrollview;
+    
+    UILabel *_label;
+    
+    NSInteger contentWidth;
+    NSInteger labelWidth;
+    
+    BOOL _scrolling;
+}
+
+- (void)scrollWithCurve:(UIViewAnimationOptions)curve;
+- (CGSize)labelSizeForText:(NSString *)text forFont:(UIFont *)font;
+
 @end
 
+
+
 @implementation CLTickerView
-@synthesize scrollview;
-@synthesize marqueeStr;
-@synthesize marqueeFont;
 
-#define SCROLLING_TIME_INTERVAL 0.01
-#define SCROLLING_PIXEL_DISTANCE 1
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-        self.backgroundColor = [UIColor clearColor];
-    }
-    return self;
-}
-
-- (CGSize)labelSizeForText:(NSString *)text forFont:(UIFont *)font {
-    CGSize expectedLabelSize = [text sizeWithFont:font 
-                                      constrainedToSize:CGSizeMake(10000, self.frame.size.height) 
-                                          lineBreakMode:UILineBreakModeWordWrap];
-    return expectedLabelSize;
-}
-
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
-    // Drawing code
-    if (self.scrollview == nil) {
-        CGSize labelSize = [self labelSizeForText:self.marqueeStr forFont:self.marqueeFont];
-        labelWidth = labelSize.width;
+    self.backgroundColor = [UIColor clearColor];
+    
+    if (_scrollview == nil) {
         
-        self.scrollview = [[CLScrollview alloc] initWithFrame:CGRectMake(0, 0, 
-                                                                         self.frame.size.width, 
-                                                                         self.frame.size.height)];
-        self.scrollview.delegate = self;
-        self.scrollview.customDelegate = self;
+        _scrollview = [[CLScrollview alloc] initWithFrame:CGRectMake(0, 0,
+                                                                     self.frame.size.width,
+                                                                     self.frame.size.height)];
+        _scrollview.delegate = self;
+        _scrollview.customDelegate = self;
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width,
-                                                                   0,
-                                                                   labelSize.width,
-                                                                   self.frame.size.height)];
-        label.font = self.marqueeFont;
-        label.backgroundColor = [UIColor clearColor];
-        label.textColor = [UIColor whiteColor];
-        label.text = self.marqueeStr;
         
-        [self.scrollview addSubview:label];
-        [self addSubview:self.scrollview];
-        [label release];
+        _label = [[UILabel alloc] initWithFrame:CGRectZero];
+        [self setupLabel];
+        [_scrollview addSubview:_label];
         
-        contentWidth = 2 * self.frame.size.width + labelSize.width;
-        [self.scrollview setContentSize:CGSizeMake(contentWidth, self.frame.size.height)];
-        startScrolling = NO;
+        [self addSubview:_scrollview];
+        
+        contentWidth = 2 * self.frame.size.width + _label.frame.size.width;
+        [_scrollview setContentSize:CGSizeMake(contentWidth, self.frame.size.height)];
+        
+        _scrolling = NO;
+        
         [self startScrolling];
     }
 }
 
-- (void)dealloc {
-    [self stopScrolling];
-    [self.marqueeFont release];
-    [self.marqueeStr release];
-    [super dealloc];
-}
+
+
 
 //start scroll animation
+
 - (void)startScrolling {
-    if (!startScrolling) {
-        startScrolling = YES;
-        scrollingTimer = [NSTimer scheduledTimerWithTimeInterval:SCROLLING_TIME_INTERVAL
-                                                          target:self
-                                                        selector:@selector(scroll:)
-                                                        userInfo:nil
-                                                         repeats:YES];
+    
+    // Using core animation greatly reduces the CPU load.
+    
+    if (!_scrolling) {
+        
+        _scrolling = YES;
+        
+        [self scrollWithCurve:UIViewAnimationOptionCurveEaseIn];
+        
     }
 }
+
 
 //stop scroll animation
+
 - (void)stopScrolling {
-    if (startScrolling) {
-        [scrollingTimer invalidate];
-        scrollingTimer = nil;
-        startScrolling = NO;
+    
+    if (_scrolling) {
+        
+        _scrollview.bounds = [[_scrollview.layer presentationLayer] bounds];  // so we don't jump to the end of animation
+        [_scrollview.layer removeAllAnimations];
+        
+        _scrolling = NO;
     }
 }
 
-- (void)scroll:(NSTimer *)timer {
-    if ([self.scrollview contentOffset].x >= contentWidth - self.frame.size.width) {
-        [self.scrollview setContentOffset:CGPointMake(0, 0)];
+
+
+- (void)scrollWithCurve:(UIViewAnimationOptions)curve
+{
+    if ([_scrollview contentOffset].x >= contentWidth - self.frame.size.width) {
+        
+        [_scrollview setContentOffset:CGPointMake(0, 0)];
     }
-    CGPoint point = [self.scrollview contentOffset];
-    point.x += SCROLLING_PIXEL_DISTANCE;
-    [self.scrollview setContentOffset:point];
+    
+    __block CLTickerView *safeSelf = self;
+    
+    [UIView animateWithDuration:1.0  delay:0.0 options:(UIViewAnimationOptionAllowUserInteraction | curve)
+     
+                     animations:^{
+                         
+                         CGPoint point = [_scrollview contentOffset];
+                         point.x = point.x+SCROLLING_SPEED;
+                         [_scrollview setContentOffset:point];
+                         
+                     }
+                     completion:^(BOOL completed){
+                         
+                         if  (completed) [safeSelf scrollWithCurve:UIViewAnimationOptionCurveLinear];
+                     }];
 }
+
+
+
+- (void)setMarqueeStr:(NSString *)string {
+    
+    if ([_marqueeStr isEqualToString:string]) return;
+    
+    // If the string is changed or was not nil, fade the old one out and start the new one from the left.
+    
+    if (!_marqueeStr) {
+        _marqueeStr = string;
+        return;
+    }
+    
+    _marqueeStr = string;
+    
+    __block CLScrollview *safeScrollView = _scrollview;
+    __block CLTickerView *safeSelf = self;
+    
+    
+    [UIView animateWithDuration:0.5  delay:0.0 options:(UIViewAnimationOptionCurveLinear)
+     
+                     animations:^{
+                         
+                         _label.alpha = 0.0;
+                         
+                     }
+     
+                     completion:^(BOOL completed){
+                         
+                         if  (completed) {
+                             
+                             [safeSelf setupLabel];
+                             
+                             _label.alpha = 1.0;
+                             
+                             [safeSelf stopScrolling];
+                             [safeScrollView setContentOffset:CGPointMake(0, 0)];
+                             [safeSelf startScrolling];
+                         }
+                         
+                     }];
+}
+
+
+- (void)setupLabel {
+    
+    CGSize labelSize = [self labelSizeForText:self.marqueeStr forFont:self.marqueeFont];
+    labelWidth = labelSize.width;
+    
+    _label.frame = (CGRect){self.frame.size.width, 0, labelSize.width, self.frame.size.height};
+    
+    _label.font = _marqueeFont;
+    _label.backgroundColor = [UIColor clearColor];
+    _label.textColor = [UIColor whiteColor];
+    _label.text = _marqueeStr;
+}
+
+
+- (CGSize)labelSizeForText:(NSString *)text forFont:(UIFont *)font {
+    CGSize expectedLabelSize = [text sizeWithFont:font
+                                constrainedToSize:CGSizeMake(10000, self.frame.size.height)
+                                    lineBreakMode:UILineBreakModeWordWrap];
+    return expectedLabelSize;
+}
+
+
+
 
 #pragma Scrollview Delegate
 
@@ -122,6 +197,8 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     [self startScrolling];
 }
+
+
 #pragma mark CustomScrollviewDelegate
 
 - (void)userEndTouch {
@@ -131,7 +208,8 @@
 
 - (void)userTouch {
     //stop scrolling when user touch it
-    [self stopScrolling];
+    
+    //  [self stopScrolling];
 }
 
 - (void)userDrag {

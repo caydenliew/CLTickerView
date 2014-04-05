@@ -6,19 +6,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CLScrollview.h"
 
-@interface CLTickerView : UIView <UIScrollViewDelegate, CLScrollviewDelegate> {
-    NSTimer *scrollingTimer;
-    NSInteger contentWidth;
-    NSInteger labelWidth;
-    BOOL startScrolling;
-}
+#define SCROLLING_SPEED 40    // points per second
 
-@property (nonatomic, retain) CLScrollview *scrollview;
-@property (nonatomic, retain) NSString *marqueeStr;
-@property (nonatomic, retain) UIFont *marqueeFont;
 
-- (CGSize)labelSizeForText:(NSString *)text forFont:(UIFont *)font;
+@interface CLTickerView : UIView
+    
+
+@property (nonatomic, strong) NSString *marqueeStr;
+@property (nonatomic, strong) UIFont *marqueeFont;
+
+- (void)startScrolling;
+- (void)stopScrolling;
 
 @end

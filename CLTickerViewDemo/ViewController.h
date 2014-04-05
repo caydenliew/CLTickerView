@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CLTickerView.h"
 
 @interface ViewController : UIViewController
+
+@property (nonatomic)  CLTickerView *ticker;
+
+@property (strong, nonatomic) IBOutlet UITextField *textField;
+- (IBAction)goTouchUp:(id)sender;
 
 @end
