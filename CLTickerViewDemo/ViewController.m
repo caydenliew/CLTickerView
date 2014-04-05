@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "CLTickerView.h"
+
 
 @implementation ViewController
 
@@ -26,11 +26,11 @@
     self.view.backgroundColor = [UIColor blackColor];
     
 	// Do any additional setup after loading the view, typically from a nib.
-    CLTickerView *ticker = [[CLTickerView alloc] initWithFrame:CGRectMake(0, 20, 320, 30)];
-    ticker.marqueeStr = @"This is a sample ios marquee using scrollview and timer. You can also manually control it by scroling left or right, or touch on it to stop it, and release it to auto restart the marquee.";
-    ticker.marqueeFont = [UIFont boldSystemFontOfSize:16];
+    _ticker = [[CLTickerView alloc] initWithFrame:CGRectMake(0, 20, 320, 30)];
+    _ticker.marqueeStr = @"This is a sample ios marquee using scrollview and timer. You can also manually control it by scroling left or right, or touch on it to stop it, and release it to auto restart the marquee.";
+    _ticker.marqueeFont = [UIFont boldSystemFontOfSize:16];
     
-    [self.view addSubview:ticker];
+    [self.view addSubview:_ticker];
 }
 
 - (void)viewDidUnload
@@ -66,4 +66,9 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+- (IBAction)goTouchUp:(id)sender {
+    
+    [_ticker setMarqueeStr:_textField.text];
+    
+}
 @end
